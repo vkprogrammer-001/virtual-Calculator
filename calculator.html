@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Simple Calculator</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <style>
-        header{
+        body {
+            background-color: aliceblue;
+        }
+
+        header {
             text-shadow: 0px 1px 1px;
             padding-top: 30px;
             padding-left: 550px;
             font-family: 'Tangerine', serif;
             font-size: 48px;
         }
+
         .calculator {
-            margin-top:80px ;
-            margin-left:500px ;
+            margin-top: 80px;
+            margin-left: 500px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,21 +27,47 @@
             width: 300px;
             background-color: #4979a8;
             border: 1px solid black;
+            border-radius: 10px;
         }
+
         #result {
             border: 2px solid black;
-            height: 20px;
-            width: 200px;
+            height: 30px;
+            width: 242px;
             margin-bottom: 10px;
         }
+
         .button {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             margin: 5px;
             cursor: pointer;
         }
+
+        @media (max-width: 600px) {
+            header {
+                padding-left: 30px;
+            }
+
+            .calculator {
+                margin-left: 10px;
+                width: 90%;
+            }
+
+            #result {
+                width: 90%;
+            }
+
+            .button {
+                width: 18%;
+                height: 30px;
+                font-size: 14px;
+                margin: 1%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h2>Calculator</h2>
@@ -53,42 +85,52 @@
             <button class="button" onclick="appendNumber('8')">8</button>
             <button class="button" onclick="appendNumber('9')">9</button>
             <button class="button" onclick="appendOperator('*')">*</button>
-            
+
             <br>
             <button class="button" onclick="appendNumber('4')">4</button>
             <button class="button" onclick="appendNumber('5')">5</button>
             <button class="button" onclick="appendNumber('6')">6</button>
             <button class="button" onclick="appendOperator('-')">-</button>
-            
+
             <br>
             <button class="button" onclick="appendNumber('1')">1</button>
             <button class="button" onclick="appendNumber('2')">2</button>
             <button class="button" onclick="appendNumber('3')">3</button>
             <button class="button" onclick="appendOperator('+')">+</button>
-            
+
             <br>
-            <button class="button" onclick="appendOperator('-')">+/-</button>
+            <button class="button" onclick="sign('-')">+/-</button>
             <button class="button" onclick="appendNumber('0')">0</button>
             <button class="button" onclick="appendOperator('.')">.</button>
             <button class="button" onclick="calculateResult()">=</button>
-            
+
         </div>
     </div>
     <script>
         let resultField = document.getElementById('result');
-        let count=1;
+        let count = 1;
+        let CountS = 0;
         function appendNumber(number) {
             resultField.value = resultField.value.toString() + number.toString();
         }
+        function sign(sign) {
+            if (CountS % 2 == 0) {
+                resultField.value = resultField.value.toString() + sign.toString();
+                CountS++;
+            } else {
+                resultField.value = '+'.toString();
+                CountS++;
+            }
+        }
         function bracket(number) {
-            if (count%2==1){
+            if (count % 2 == 1) {
                 resultField.value = resultField.value.toString() + number.toString();
                 count++;
-            }else{
+            } else {
                 resultField.value = resultField.value.toString() + ')'.toString();
                 count++;
             }
-            
+
         }
         function appendOperator(operator) {
             resultField.value = resultField.value.toString() + operator.toString();
@@ -105,4 +147,5 @@
         }
     </script>
 </body>
+
 </html>
