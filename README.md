@@ -31,6 +31,6 @@ Follow these steps to set up the **Virtual Calculator 2023** on your local machi
    - Search for "Live Server" and click "Install" for the extension by Ritwick Dey.
 
 4. **Run with Live Server**:
-   - Open the `index.html` file.
+   - Open the `calculator.html` file.
    - Right-click anywhere in the file and select "Open with Live Server."
    - The calculator will open in your default web browser.
